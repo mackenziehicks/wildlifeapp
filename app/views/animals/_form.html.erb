@@ -1,0 +1,45 @@
+<%= form_for(@animal) do |f| %>
+  <% if @animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+
+      <ul>
+      <% @animal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="field">
+        <%= f.label :common_name %><br>
+        <%= f.text_field :common_name %>
+      </div>
+      <div class="field">
+        <%= f.label :latin_name %><br>
+        <%= f.text_field :latin_name %>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-default " href="http://latin-dictionary.net/" target="_blank" role="button">Latin Dictionary</a>
+      </div>
+
+
+      <div class="field">
+        <br>
+        <%= f.label :kingdom %><br>
+        <%= f.text_field :kingdom %>
+      </div>
+      <div class="actions">
+        <%= f.submit class:"btn btn-default"%>
+      </div>
+
+  </div>
+
+    <div class="col-md-6">
+      <img class="burd" src="https://hd.unsplash.com/44/MIbCzcvxQdahamZSNQ26_12082014-IMG_3526.jpg">
+    </div>
+  </div>
+<% end %>

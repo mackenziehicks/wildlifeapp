@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <strong>Date:</strong>
+      <%= @sighting.date %>
+    </p>
+
+    <p>
+      <strong>Time:</strong>
+      <%= @sighting.time.strftime("%H:%M") %>
+    </p>
+
+    <p>
+      <strong>Lat long:</strong>
+      <%= @sighting.lat_long %>
+    </p>
+
+    <p>
+      <strong>Region:</strong>
+      <%= @sighting.region %>
+    </p>
+
+    <p>
+      <strong>Animal:</strong>
+      <%=@sighting.animal.common_name%>
+    </p>
+
+    <div class="text-shadow">
+    <%= link_to 'Edit', edit_sighting_path(@sighting) %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <img class="burd" src="https://hd.unsplash.com/photo-1431023824486-a9afaaa5838c">
+  </div>
+</div>

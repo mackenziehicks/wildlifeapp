@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Sightings</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Lat long</th>
+      <th>Region</th>
+      <th>Animal</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sightings.each do |sighting| %>
+      <tr>
+        <td><%= sighting.date %></td>
+        <td><%= sighting.time.strftime("%H:%M") %></td>
+        <td><%= sighting.lat_long %></td>
+        <td><%= sighting.region %></td>
+        <td> <a href="/animals/<%=sighting.animal.id%>"> <%= sighting.animal.common_name %></td> </a>
+        <td><%= link_to 'Show', sighting %></td>
+        <td><%= link_to 'Edit', edit_sighting_path(sighting) %></td>
+        <td><%= link_to 'Destroy', sighting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<form action="/sightings" method="get">
+  <label for="start_date">Start date</label>
+  <input id="start_date" name="start_date" type="date" required>
+
+  <label for="end_date">End date</label>
+  <input id="end_date" name="end_date" type="date" required>
+
+  <label for="region">Region</label>
+  <span id="region" name="region" class="field">
+    <%= select_tag("region", options_for_select(@regions_for_select)) %>
+  </span>
+
+
+  <button class="btn btn-default">Run report</button>
+
+</form>
